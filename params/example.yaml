@@ -1,0 +1,16 @@
+mqtt_multi_pub:
+  ros__parameters:
+    broker_host: 127.0.0.1
+    broker_port: 1883
+    username: 'factory:mqtt' # kalau pakai vhost 'factory'
+    password: 'mqttpass'
+    topic_base: 'site'
+    robot_id: 'robot1'
+    qos: 0
+    retain: false
+    acc_free:
+      ros_topic: '/asv/imu/acc_free'
+      throttle_hz: 20.0
+    rpy_deg:
+      ros_topic: '/asv/imu/rpy_deg'
+      throttle_hz: 10.0
