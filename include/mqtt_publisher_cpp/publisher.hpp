@@ -1,4 +1,5 @@
 #pragma once
+
 #include <rclcpp/rclcpp.hpp>
 #include <mosquitto.h>
 #include <string>
@@ -11,11 +12,11 @@ class Publisher {
 public:
   struct Config {
     std::string host = "127.0.0.1";
-    int         port = 1883;
+    int port = 1883;
     std::string username;
     std::string password;
     std::string topic_base = "site";
-    std::string robot_id   = "robot1";
+    std::string robot_id = "robot1";
     int qos = 0;
     bool retain = false;
     int keepalive = 60;
@@ -30,8 +31,11 @@ public:
   bool send(const std::string& sensor, const std::string& payload);
   const std::string& robot_id() const { return cfg_.robot_id; }
 
+  void reconnect();  // trigger reconnect manually
+  rclcpp::Node* node() { return node_; }
+
 private:
-  void connect_locked();
+  void connect_locked(int attempt = 0);
   static void on_connect(struct mosquitto*, void*, int);
   static void on_disconnect(struct mosquitto*, void*, int);
   static void on_log(struct mosquitto*, void*, int, const char*);
