@@ -2,6 +2,20 @@
 
 ## Accelerometer
 
+The accelerometer measures linear acceleration along the X, Y, and Z axes.
+
+### Topic (Accelerometer)
+
+The topic for publishing accelerometer data is:
+
+```bash
+/asv/imu/acc_free
+```
+
+### Data Format (Accelerometer)
+
+This data is published in the following JSON format:
+
 ```json
 {
   "ver": 1,
@@ -20,6 +34,20 @@
 ```
 
 ## Roll, Pitch, Yaw
+
+The roll, pitch, and yaw represent the orientation of the robot in 3D space.
+
+### Topic (RPY)
+
+The topic for publishing roll, pitch, and yaw data is:
+
+```bash
+/asv/imu/rpy_deg
+```
+
+### Data Format (RPY)
+
+This data is published in the following JSON format:
 
 ```json
 {
